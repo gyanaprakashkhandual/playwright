@@ -1,0 +1,44 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+   "scripts": {
+    "test": "cross-env CUCUMBER_PUBLISH_QUIET=true cucumber-js --config config/cucumber.json",
+    "test:headed": "cross-env HEADLESS=false cucumber-js --config config/cucumber.json",
+    "test:chrome": "cross-env BROWSER=chromium cucumber-js --config config/cucumber.json",
+    "test:firefox": "cross-env BROWSER=firefox cucumber-js --config config/cucumber.json",
+    "test:webkit": "cross-env BROWSER=webkit cucumber-js --config config/cucumber.json",
+    "allure:generate": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open allure-report",
+    "allure:report": "npm run allure:generate && npm run allure:open",
+    "test:report": "npm test && npm run allure:report",
+    "codegen": "playwright codegen",
+"codegen:url": "playwright codegen --target=playwright-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gyanaprakashkhandual/playwright.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/gyanaprakashkhandual/playwright/issues"
+  },
+  "homepage": "https://github.com/gyanaprakashkhandual/playwright#readme",
+  "dependencies": {
+    "@cucumber/cucumber": "^12.7.0",
+    "@cucumber/pretty-formatter": "^3.2.0",
+    "@playwright/test": "^1.59.0",
+    "@types/node": "^25.5.0",
+    "allure-commandline": "^2.38.1",
+    "allure-cucumberjs": "^3.6.0",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.3.1",
+    "playwright": "^1.59.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  }
+}
