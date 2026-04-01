@@ -1,14 +1,19 @@
-import { Before, After, BeforeAll, AfterAll, Status } from '@cucumber/cucumber';
-import { PlaywrightWorld } from '../utils/world';
+import { Before, After, ITestCaseHookParameter } from "@cucumber/cucumber";
+import { PlaywrightWorld } from "@utils/world";
 
 Before(async function (this: PlaywrightWorld) {
-  await this.openBrowser();
+  console.log(">>> Before hook running");
+  console.log(">>> this.page before init:", this.page);
+  await this.init();
+  console.log(">>> this.page after init:", this.page);
 });
 
-After(async function (this: PlaywrightWorld, scenario) {
-  if (scenario.result?.status === Status.FAILED) {
-    const screenshot = await this.page.screenshot({ fullPage: true });
-    this.attach(screenshot, 'image/png');
+After(async function (this: PlaywrightWorld, scenario: ITestCaseHookParameter) {
+  if (scenario.result?.status === "FAILED") {
+    if (this.page) {
+      const screenshot = await this.page.screenshot();
+      await this.attach(screenshot, "image/png");
+    }
   }
-  await this.closeBrowser();
+  await this.close();
 });

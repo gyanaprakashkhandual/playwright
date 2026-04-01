@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-   "scripts": {
+  "scripts": {
     "test": "cross-env CUCUMBER_PUBLISH_QUIET=true cucumber-js --config config/cucumber.json",
     "test:headed": "cross-env HEADLESS=false cucumber-js --config config/cucumber.json",
     "test:chrome": "cross-env BROWSER=chromium cucumber-js --config config/cucumber.json",
@@ -14,7 +14,7 @@
     "allure:report": "npm run allure:generate && npm run allure:open",
     "test:report": "npm test && npm run allure:report",
     "codegen": "playwright codegen",
-"codegen:url": "playwright codegen --target=playwright-test"
+    "codegen:url": "playwright codegen --target=playwright-test"
   },
   "repository": {
     "type": "git",
@@ -40,5 +40,8 @@
     "playwright": "^1.59.0",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.2"
+  },
+  "devDependencies": {
+    "tsconfig-paths": "^4.2.0"
   }
 }

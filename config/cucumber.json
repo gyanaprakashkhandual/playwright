@@ -1,10 +1,14 @@
 {
   "default": {
     "require": [
+      "src/utils/world.ts",
       "src/hooks/hooks.ts",
       "src/steps/**/*.ts"
     ],
-    "requireModule": ["ts-node/register"],
+    "requireModule": [
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ],
     "format": [
       "allure-cucumberjs/reporter",
       "@cucumber/pretty-formatter"

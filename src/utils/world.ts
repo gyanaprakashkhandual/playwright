@@ -1,6 +1,12 @@
-import { Browser, BrowserContext, Page, chromium, firefox, webkit } from 'playwright';
-import { setWorldConstructor, World, IWorldOptions } from '@cucumber/cucumber';
-import { ENV } from './env';
+import { World, IWorldOptions, setWorldConstructor } from "@cucumber/cucumber";
+import {
+  Browser,
+  BrowserContext,
+  Page,
+  chromium,
+  firefox,
+  webkit,
+} from "@playwright/test";
 
 export class PlaywrightWorld extends World {
   browser!: Browser;
@@ -11,27 +17,19 @@ export class PlaywrightWorld extends World {
     super(options);
   }
 
-  async openBrowser(): Promise<void> {
-    const browserType =
-      ENV.browser === 'firefox' ? firefox :
-      ENV.browser === 'webkit' ? webkit :
-      chromium;
+  async init() {
+    const browserName =
+      (process.env.BROWSER as "chromium" | "firefox" | "webkit") || "chromium";
+    const headless = process.env.HEADLESS !== "false";
 
-    this.browser = await browserType.launch({
-      headless: ENV.headless,
-      slowMo: ENV.slowMo,
-    });
-
-    this.context = await this.browser.newContext({
-      baseURL: ENV.baseUrl,
-      viewport: { width: 1280, height: 720 },
-    });
-
+    const browserMap = { chromium, firefox, webkit };
+    this.browser = await browserMap[browserName].launch({ headless });
+    this.context = await this.browser.newContext();
     this.page = await this.context.newPage();
-    this.page.setDefaultTimeout(ENV.timeout);
   }
 
-  async closeBrowser(): Promise<void> {
+  async close() {
+    await this.page?.close();
     await this.context?.close();
     await this.browser?.close();
   }
