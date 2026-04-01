@@ -5,14 +5,8 @@
       "src/hooks/hooks.ts",
       "src/steps/**/*.ts"
     ],
-    "requireModule": [
-      "ts-node/register",
-      "tsconfig-paths/register"
-    ],
-    "format": [
-      "allure-cucumberjs/reporter",
-      "@cucumber/pretty-formatter"
-    ],
+    "requireModule": ["ts-node/register", "tsconfig-paths/register"],
+    "format": ["allure-cucumberjs/reporter", "@cucumber/pretty-formatter"],
     "formatOptions": {
       "resultsDir": "allure-results"
     },

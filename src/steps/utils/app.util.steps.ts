@@ -8,9 +8,9 @@ let portfolioPage: PortfolioPage;
 Given(
   "I open the portfolio website {string}",
   async function (this: PlaywrightWorld, url: string) {
-    portfolioPage = new PortfolioPage(this.page);  // ← passes this.page from world
+    portfolioPage = new PortfolioPage(this.page); // ← passes this.page from world
     await portfolioPage.openHomepage(url);
-  }
+  },
 );
 
 Then(
@@ -18,7 +18,7 @@ Then(
   async function (this: PlaywrightWorld, expectedTitle: string) {
     const actualTitle = await portfolioPage.getPageTitle();
     expect(actualTitle).toBe(expectedTitle);
-  }
+  },
 );
 
 Then(
@@ -26,5 +26,5 @@ Then(
   async function (this: PlaywrightWorld, partialTitle: string) {
     const actualTitle = await portfolioPage.getPageTitle();
     expect(actualTitle).toContain(partialTitle);
-  }
+  },
 );

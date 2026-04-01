@@ -1,4 +1,4 @@
-import { Page } from 'playwright';
+import { Page } from "playwright";
 
 export class BasePage {
   protected page: Page;
@@ -7,7 +7,7 @@ export class BasePage {
     this.page = page;
   }
 
-  async navigate(path: string = '/'): Promise<void> {
+  async navigate(path: string = "/"): Promise<void> {
     await this.page.goto(path);
   }
 
@@ -16,7 +16,7 @@ export class BasePage {
   }
 
   async waitForElement(selector: string): Promise<void> {
-    await this.page.waitForSelector(selector, { state: 'visible' });
+    await this.page.waitForSelector(selector, { state: "visible" });
   }
 
   async clickElement(selector: string): Promise<void> {

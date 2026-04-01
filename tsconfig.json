@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "outDir": "./dist",
     "resolveJsonModule": true,
-    "baseUrl": ".",
+    "baseUrl": "https://gyanprakash.vercel.app",
     "paths": {
       "@pages/*": ["src/pages/*"],
       "@steps/*": ["src/steps/*"],
