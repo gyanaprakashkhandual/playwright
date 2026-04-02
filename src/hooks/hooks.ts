@@ -1,5 +1,5 @@
 import { Before, After, ITestCaseHookParameter } from "@cucumber/cucumber";
-import { PlaywrightWorld } from "@utils/world";
+import { PlaywrightWorld } from "../utils/world";
 
 Before(async function (this: PlaywrightWorld) {
   console.log(">>> Before hook running");

@@ -1,4 +1,4 @@
-import { BasePage } from "@pages/Base.page";
+import { BasePage } from "../Base.page";
 
 export class PortfolioPage extends BasePage {
   async openHomepage(url: string): Promise<void> {

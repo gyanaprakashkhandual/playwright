@@ -1,7 +1,7 @@
 import { Given, Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-import { PortfolioPage } from "@pages/utils/app.util.page";
-import { PlaywrightWorld } from "@utils/world";
+import { PortfolioPage } from "../../pages/utils/app.util.page";
+import { PlaywrightWorld } from "../../utils/world";
 
 let portfolioPage: PortfolioPage;
 
